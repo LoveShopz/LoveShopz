@@ -4,155 +4,128 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Love Shopz</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #ffe6f0, #ffffff);
-    }
-    header {
-      background: white;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    header h1 {
-      color: #e60073;
-      margin: 0;
-    }
-    .hero {
-      text-align: center;
-      padding: 20px;
-    }
-    .hero h2 {
-      color: #cc0066;
-    }
-    .categories {
-      display: flex;
-      overflow-x: auto;
-      gap: 10px;
-      padding: 10px;
-      justify-content: center;
-    }
-    .categories div {
-      background: #ff4da6;
-      color: white;
-      padding: 8px 15px;
-      border-radius: 20px;
-      white-space: nowrap;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      padding: 15px;
-    }
-    .card {
-      background: white;
-      border-radius: 15px;
-      padding: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    .card button {
-      background: #e60073;
-      color: white;
-      border: none;
-      padding: 8px;
-      border-radius: 20px;
-      width: 100%;
-      cursor: pointer;
-      margin-top: 5px;
-    }
-    .order-section {
-      padding: 20px;
-      text-align: center;
-    }
-    .order-section a {
-      display: inline-block;
-      background: #e60073;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 25px;
-      text-decoration: none;
-      margin-top: 10px;
-    }
-    .gcash {
-      margin-top: 15px;
-      font-size: 14px;
-    }
-    .floating-buttons {
-      position: fixed;
-      bottom: 15px;
-      right: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .floating-buttons a {
-      text-decoration: none;
-      padding: 10px;
-      border-radius: 50px;
-      color: white;
-      text-align: center;
-    }
-    .messenger { background: #1877f2; }
-    .whatsapp { background: #25d366; }
-    footer {
-      text-align: center;
-      padding: 10px;
-      font-size: 12px;
-      background: white;
-      margin-top: 20px;
-    }
+    body { margin:0; font-family:Arial, sans-serif; background:linear-gradient(to bottom,#ffe6f0,#ffffff);} 
+    header { background:white; padding:15px; text-align:center; box-shadow:0 2px 5px rgba(0,0,0,0.1);} 
+    header h1 { color:#e60073; margin:0;} .hero { text-align:center; padding:20px;} 
+.hero h2 { color:#cc0066;} 
+
+.categories { display:flex; overflow-x:auto; gap:10px; padding:10px; justify-content:center;} 
+.categories button { background:#ff4da6; color:white; border:none; padding:8px 15px; border-radius:20px; cursor:pointer;} 
+
+.products { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:15px; padding:15px;} 
+.card { background:white; border-radius:15px; padding:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); text-align:center; transition:transform 0.3s ease;} 
+.card:hover { transform:scale(1.05);} 
+.card img { width:100%; border-radius:10px;} 
+.card button { background:#e60073; color:white; border:none; padding:8px; border-radius:20px; width:100%; cursor:pointer; margin-top:5px;} 
+
+.order-section, .payment-section { padding:20px; text-align:center;} 
+.order-section a { display:inline-block; background:#e60073; color:white; padding:10px 20px; border-radius:25px; text-decoration:none; margin-top:10px;} 
+
+.gcash { margin-top:15px; font-size:14px;} 
+
+.payment-form input, .payment-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.payment-form button {
+  background: #e60073;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.floating-buttons { position:fixed; bottom:15px; right:15px; display:flex; flex-direction:column; gap:10px;} 
+.floating-buttons a { text-decoration:none; padding:10px; border-radius:50px; color:white; text-align:center;} 
+.messenger { background:#1877f2;} 
+.whatsapp { background:#25d366;} 
+
+footer { text-align:center; padding:10px; font-size:12px; background:white; margin-top:20px;}
+
   </style>
 </head>
 <body><header>
   <h1>Love Shopz 💖</h1>
-  <p>Your One‑Stop Online Shop</p>
+  <p>Your One-Stop Online Shop</p>
 </header><section class="hero">
   <h2>Shop Smart. Shop Easy.</h2>
   <p>Men • Women • Electronics • Home Essentials</p>
 </section><section class="categories">
-  <div>All</div>
-  <div>Men</div>
-  <div>Women</div>
-  <div>Electronics</div>
-  <div>Home</div>
-</section><section class="products">
-  <div class="card">
-    <img src="https://via.placeholder.com/300" alt="Product">
+  <button onclick="filterProducts('all')">All</button>
+  <button onclick="filterProducts('men')">Men</button>
+  <button onclick="filterProducts('women')">Women</button>
+  <button onclick="filterProducts('electronics')">Electronics</button>
+  <button onclick="filterProducts('home')">Home</button>
+</section><section class="products" id="productList">  <div class="card" data-category="women">
+    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" alt="T-Shirt">
     <h4>Fashion T-Shirt</h4>
     <p>₱399</p>
-    <button>Buy Now</button>
-  </div>
-  <div class="card">
-    <img src="https://via.placeholder.com/300" alt="Product">
+    <button onclick="orderProduct('Fashion T-Shirt')">Buy Now</button>
+  </div>  <div class="card" data-category="electronics">
+    <img src="https://images.unsplash.com/photo-1585386959984-a41552231658" alt="Speaker">
     <h4>Bluetooth Speaker</h4>
     <p>₱1,299</p>
-    <button>Buy Now</button>
-  </div>
-  <div class="card">
-    <img src="https://via.placeholder.com/300" alt="Product">
+    <button onclick="orderProduct('Bluetooth Speaker')">Buy Now</button>
+  </div>  <div class="card" data-category="men">
+    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" alt="Shoes">
     <h4>Casual Shoes</h4>
     <p>₱1,499</p>
-    <button>Buy Now</button>
-  </div>
-</section><section class="order-section">
+    <button onclick="orderProduct('Casual Shoes')">Buy Now</button>
+  </div></section><section class="order-section">
   <h3>Place Your Order</h3>
-  <p>Fill out our secure order form:</p>
-  <a href="https://forms.gle/YOUR-GOOGLE-FORM-LINK" target="_blank">Open Order Form</a>  <div class="gcash">
+  <p>Selected product will auto-fill in the form.</p>
+  <a id="orderLink" href="https://forms.gle/YOUR-GOOGLE-FORM-LINK" target="_blank">Open Order Form</a>  <div class="gcash">
     <p><strong>GCash:</strong> 09473225005</p>
     <p><strong>Name:</strong> Denny Vale</p>
     <p>Send payment screenshot to: laf143.2k22@gmail.com</p>
   </div>
+</section><section class="payment-section">
+  <h3>Payment Confirmation</h3>
+  <p>After payment, submit confirmation:</p>
+  <form class="payment-form" onsubmit="sendPayment(event)">
+    <input type="text" id="payer" placeholder="Your Name" required>
+    <input type="text" id="reference" placeholder="GCash Reference Number" required>
+    <textarea id="details" placeholder="Order Details" required></textarea>
+    <button type="submit">Send Confirmation</button>
+  </form>
 </section><div class="floating-buttons">
   <a href="https://m.me/YOURFACEBOOKPAGE" target="_blank" class="messenger">Messenger</a>
   <a href="https://wa.me/639473225005" target="_blank" class="whatsapp">WhatsApp</a>
 </div><footer>
   © 2026 Love Shopz. All rights reserved.
-</footer></body>
-</html><html></html>
+</footer><script>
+function filterProducts(category) {
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    if (category === 'all' || card.dataset.category === category) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+function orderProduct(productName) {
+  document.getElementById('orderLink').href = "https://forms.gle/YOUR-GOOGLE-FORM-LINK";
+  alert(productName + " selected! Complete the order form.");
+}
+
+function sendPayment(event) {
+  event.preventDefault();
+  const name = document.getElementById('payer').value;
+  const ref = document.getElementById('reference').value;
+  const details = document.getElementById('details').value;
+
+  const mailto = `mailto:laf143.2k22@gmail.com?subject=Payment Confirmation&body=` +
+    encodeURIComponent(`Name: ${name}\nReference: ${ref}\nDetails: ${details}`);
+
+  window.location.href = mailto;
+  alert('Payment confirmation ready to send. Please confirm in your email app.');
+}
+</script></body>
+</html>
